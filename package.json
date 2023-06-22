@@ -1,0 +1,29 @@
+{
+  "name": "hw01-node-js",
+  "version": "1.0.0",
+  "description": "my first project",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VolZa/hw01-node-js.git"
+  },
+  "keywords": [
+    "keyw"
+  ],
+  "author": "VolZa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VolZa/hw01-node-js/issues"
+  },
+  "homepage": "https://github.com/VolZa/hw01-node-js#readme",
+  "dependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  }
+}
