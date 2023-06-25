@@ -34,7 +34,7 @@ async function invokeAction({ action, id, name, email, phone }) {
      case 'list':
        // викликаю функцію що зчитує (з файла .json) список контактів та вивожу їх в консоль
        const contactL = await contacts.listContacts();
-       console.log(contactL);
+       console.table(contactL);
        break;
  
      case 'get':
