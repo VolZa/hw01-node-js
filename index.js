@@ -1,6 +1,5 @@
 const contacts = require("./contacts.js");
 
-//використвую бібліотечну yargs та вказую опції
 const argv = require('yargs')
   .option('action', {
     alias: 'a',
@@ -45,20 +44,22 @@ async function invokeAction({ action, id, name, email, phone }) {
        break;
  
      case 'add':
-       // викликаю функцію що формує об"єкт контакт  та дописує його до списку контактів, виводжу цей контакт в консоль
+      // викликаю функцію що формує об"єкт контакт  та дописує його до списку контактів, виводжу цей контакт в консоль
        const adedContact = await contacts.addContact(name, email, phone);
        console.log(adedContact);
        break;
  
      case 'remove':
-       // викликаю функцію що шукає в списку об"єкт контакт (за id) та видаляє його, в разі успішного пошуку, зі списку контактів. В разі успішного пошуку виводжу в консоль цей контакт, в разі неуспішного пошуку виводжу  null 
+        // викликаю функцію що шукає в списку об"єкт контакт (за id) та видаляє його, в разі успішного пошуку, зі списку контактів. В разі успішного пошуку виводжу в консоль цей контакт, в разі неуспішного пошуку виводжу  null 
        const removedContact = await contacts.removeContact(id);
        console.log(removedContact);
        break;
  
      default:
-       console.warn('\x1B[31m Unknown action type!');
+       console.warn('\x1B[31m Unknown action type! Ось так.');
    }
 }
 
+const { action, id, name, email, phone } = argv;
+invokeAction({ action, id, name, email, phone });
 

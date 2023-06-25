@@ -39,7 +39,7 @@ async function removeContact(contactId) {
     ...contactsL.slice(index + 1),
   ];
   await writeContacts(newContacts);
-  return delContact;
+  return delContact  || null;
 }
  
  async function addContact(name, email, phone) {
