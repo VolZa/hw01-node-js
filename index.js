@@ -1,5 +1,6 @@
 const contacts = require("./contacts.js");
-// const argv = require('yargs').argv;cl
+
+//використвую бібліотечну yargs та вказую опції
 const argv = require('yargs')
   .option('action', {
     alias: 'a',
@@ -32,66 +33,32 @@ const argv = require('yargs')
 async function invokeAction({ action, id, name, email, phone }) {
    switch (action) {
      case 'list':
-       // ...
+       // викликаю функцію що зчитує (з файла .json) список контактів та вивожу їх в консоль
        const contactL = await contacts.listContacts();
        console.log(contactL);
        break;
  
      case 'get':
-       // ... id
+       // викликаю функцію що зчитує (з файла .json) контакт за id та вивожу в консоль цей контакт
        const contact = await contacts.getContactById(id);
        console.log(contact);
        break;
  
      case 'add':
-       // ... name email phone
+       // викликаю функцію що формує об"єкт контакт  та дописує його до списку контактів, виводжу цей контакт в консоль
        const adedContact = await contacts.addContact(name, email, phone);
        console.log(adedContact);
        break;
  
      case 'remove':
-       // ... id
+       // викликаю функцію що шукає в списку об"єкт контакт (за id) та видаляє його, в разі успішного пошуку, зі списку контактів. В разі успішного пошуку виводжу в консоль цей контакт, в разі неуспішного пошуку виводжу  null 
        const removedContact = await contacts.removeContact(id);
        console.log(removedContact);
        break;
  
      default:
-       console.warn('\x1B[31m Unknown action type! Ось так.');
+       console.warn('\x1B[31m Unknown action type!');
    }
 }
 
-const { action, id, name, email, phone } = argv;
-invokeAction({ action, id, name, email, phone });
 
-
-// console.log(action, id, name, email, phone);
-// console.log(process.argv);
-
-// const actionIndex = process.argv.indexOf('--action');
-// if (actionIndex !== -1) {
-//   const action = process.argv[actionIndex + 1];
-//   const id = process.argv[actionIndex + 2];
-//   const name = process.argv[actionIndex + 3];
-//   const email = process.argv[actionIndex + 4];
-//   const phone = process.argv[actionIndex + 5];
-//   invokeAction({ action, id, name, email, phone });
-
-// }
-// console.log(action, id, name, email, phone);
-// console.log(process.argv);
-// console.log(process.argv);
-
-//  invokeAction({action: "remove", id:"968b1f78-025a-4830-88d6-b4877b8fd0a5"});
-
-//  invokeAction({action: "add", name:"Anton", email:"ant@gmail.com", phone:"083 845 2398"});
- 
-//  invokeAction({action: "get", id:"qdggE76Jtbfd9eWJHrssH"}).then(console.log).catch(console.error);
-
-//  invokeAction({action: "list"}).then(console.log).catch(console.error);
-
- 
-//  invokeAction(argv);
- // contacts
-//    .listContacts()
-//    .then((contact) => console.log(contact))
-//    .catch((er) => console.error(er));
